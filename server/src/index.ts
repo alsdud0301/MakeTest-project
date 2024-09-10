@@ -62,6 +62,15 @@ app.post('/api/user', async(req:Request, res:Response)=>{
     }
     
 });
+app.get('/api/get-username', (req:Request, res:Response) =>{
+    const username = req.session.username; //세션에서 username 받아오기
+
+    if(!username){
+        return res.status(400).json({error: '세션에 저장된 이름이 없습니다'});
+    }
+    res.status(200).json({username: username});
+
+})
 
 
 
